@@ -5,9 +5,9 @@ import {
 } from '../DesignComponents/theme'
 
 export const SmurfListContainer = styled.div`
-  width: 90%;
-  ${flex('column', 'center', 'center')}
+  width: 600px;
   max-width: 600px;
+  ${flex('column', 'center', 'center')}
   padding: 20px 10px;
   box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
   background: ${color.lightText};
@@ -31,6 +31,7 @@ export const SmurfListContainer = styled.div`
   }
 
   @media ${breakpoints[0]} {
+    width: 100%;
     font-size: ${fontSizing.sm};
 
     h1 {
