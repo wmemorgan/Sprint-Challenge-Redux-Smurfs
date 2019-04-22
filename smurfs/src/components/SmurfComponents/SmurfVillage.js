@@ -6,7 +6,18 @@ class SmurfVillage extends Component {
   render() {
     console.log(`render SmurfVillage props are: `, this.props)
     return (
-        <h2>Smurf Village</h2>
+        <div>
+          <h2>Smurf Village</h2>
+          {this.props.smurfs.map(smurf => (
+            <div key={smurf.id}>
+              <div>{smurf.id}</div>
+              <h3>{smurf.name}</h3>
+              <div>{smurf.age}</div>
+              <div>{smurf.height}</div>
+            </div>
+          ))}
+        </div>
+
 
     )
   }
