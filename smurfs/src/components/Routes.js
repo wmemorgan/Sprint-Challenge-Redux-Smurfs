@@ -5,6 +5,7 @@ import { Route, withRouter } from 'react-router-dom'
 import { getSmurfs } from '../actions'
 
 import SmurfVillage from '../components/SmurfComponents/SmurfVillage'
+import SmurfForm from '../components/SmurfComponents/SmurfForm'
 
 class Routes extends Component {
   componentDidMount() {
@@ -20,6 +21,14 @@ class Routes extends Component {
           path='/'
           exact
           component={SmurfVillage}
+        />
+        <Route 
+          path='/add'
+          render={props =>
+            <SmurfForm
+              {...props}
+              add
+            />}
         />
 
       </div>
