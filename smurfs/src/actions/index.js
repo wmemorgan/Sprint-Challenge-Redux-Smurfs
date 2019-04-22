@@ -62,7 +62,7 @@ export const UPDATE_DATA_FAILURE = 'UPDATE_DATA_FAILURE'
 export const updateSmurf = smurf => dispatch => {
   dispatch({ type: UPDATE_DATA_START })
   axios
-    .post(API_ENDPOINT, smurf)
+    .put(`${API_ENDPOINT}/${smurf.id}`, smurf)
     .then(res => {
       console.log(res.data)
       dispatch({ type: UPDATE_DATA_SUCCESS, payload: res.data })
