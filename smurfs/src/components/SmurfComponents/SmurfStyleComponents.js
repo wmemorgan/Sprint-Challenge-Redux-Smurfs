@@ -6,7 +6,6 @@ import {
 
 export const SmurfListContainer = styled.div`
   width: 600px;
-  max-width: 600px;
   ${flex('column', 'center', 'center')}
   padding: 20px 10px;
   box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
@@ -61,13 +60,15 @@ export const Preview = styled.div`
 
 export const SmurfInfoContainer = styled.div`
   ${flex('column')};
-  width: 80%;
-  min-width: 300px;
-  max-width: 600px;
+  width: 600px;
   margin: 20px 0;
   border-radius: 5px;
   box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
   background: ${color.lightText};
+
+  @media ${breakpoints[0]} {
+    width: 100%;
+  }
 
   header {
     width: 100%;
@@ -94,14 +95,14 @@ export const SmurfInfoContainer = styled.div`
 
     h3 {
       margin: 10px 0;
-      font-size: ${fontSizing.l};
-      letter-spacing: 0.35rem;
+      font-size: ${fontSizing.ml};
+      letter-spacing: 0.30rem;
       color: ${colorScheme.headingColor};
     }
 
     input:first-child {
       margin: 10px 0;
-      font-size: ${fontSizing.ml};
+      font-size: ${fontSizing.m};
     }
     
     .smurf-stats {
@@ -110,10 +111,10 @@ export const SmurfInfoContainer = styled.div`
       grid-gap: 10px;
       
       & * {
-        font-size: ${fontSizing.ml};
+        font-size: ${fontSizing.m};
 
         @media ${breakpoints[0]} {
-          font-size: ${fontSizing.m};
+          font-size: ${fontSizing.s};
         }
       }
 
@@ -126,7 +127,7 @@ export const SmurfInfoContainer = styled.div`
 
     @media ${breakpoints[0]} {
       h3 {
-        font-size: ${fontSizing.ml};
+        font-size: ${fontSizing.sm};
       }
     }
 }
@@ -154,5 +155,10 @@ export const ButtonMenu = styled.nav`
     }
   }
 `
-
+export const SpinnerContainer = styled.div`
+  width: 90%;
+  ${flex('column', 'center', 'center')};
+  background: ${color.primaryBgShading};
+  color: ${color.primaryColor};
+`
 
