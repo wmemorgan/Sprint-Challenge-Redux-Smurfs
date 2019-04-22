@@ -12,7 +12,7 @@ class Smurf extends Component {
     id: this.props.smurf.id,
     name: '',
     age: '',
-    email: ''
+    height: ''
   }
 
   prePopulateForm = () => {
@@ -24,21 +24,20 @@ class Smurf extends Component {
     })
   }
 
-  handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
   toggleEdit() {
     this.setState(prevState => (
       { edit: !prevState.edit }
     ),
       () => this.prePopulateForm()
     )
-
   }
 
-    handleUpdate = e => {
-      e.preventDefault()
+  handleInput = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handleUpdate = e => {
+    e.preventDefault()
     // invoke data update action creator
     this.props.updateSmurf(this.state)
     console.log(`Form submitted data sent: ${JSON.stringify(this.state)}`)
@@ -74,7 +73,7 @@ class Smurf extends Component {
             {!this.state.edit ?
               <h3 className="stat-data">{name}</h3> :
               <input name="name" type="text"
-                placeholder="Name" onChange={this.handleInputChange}
+                placeholder="Name" onChange={this.handleInput}
                 value={this.state.name}
               />
             }
@@ -83,7 +82,7 @@ class Smurf extends Component {
               {!this.state.edit ?
                 <div className="stat-data">{age}</div> :
                 <input name="age" type="number"
-                  placeholder="Age" onChange={this.handleInputChange}
+                  placeholder="Age" onChange={this.handleInput}
                   value={this.state.age}
                 />
               }
@@ -91,7 +90,7 @@ class Smurf extends Component {
               {!this.state.edit ?
                 <div className="stat-data">{height}</div> :
                 <input
-                  onChange={this.handleInputChange}
+                  onChange={this.handleInput}
                   placeholder="height"
                   value={this.state.height}
                   name="height"
