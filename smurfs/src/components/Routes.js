@@ -6,6 +6,7 @@ import { getSmurfs } from '../actions'
 
 import SmurfVillage from '../components/SmurfComponents/SmurfVillage'
 import SmurfForm from '../components/SmurfComponents/SmurfForm'
+import Smurf from '../components/SmurfComponents/Smurf'
 
 class Routes extends Component {
   componentDidMount() {
@@ -30,7 +31,18 @@ class Routes extends Component {
               add
             />}
         />
-
+        {this.props.smurfs.map(smurf => (
+          <Route
+            key={smurf.id}
+            path={`/smurfs/${smurf.id}`}
+            render={props =>
+              <Smurf
+                {...props}
+                smurf={smurf}
+              />
+            }
+          />
+        ))}
       </div>
     )
   }
