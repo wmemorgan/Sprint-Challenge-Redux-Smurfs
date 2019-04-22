@@ -5,10 +5,11 @@
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
-   addingSmurf: false,
-   updatingSmurf: false,
-   deletingSmurf: false,
-   error: null
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
+  error: null,
+  errorStatusCode: null
 }
 
 const reducer = (state = initialState, action) => {
