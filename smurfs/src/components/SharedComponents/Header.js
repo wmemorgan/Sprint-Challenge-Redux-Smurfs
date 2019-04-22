@@ -36,12 +36,12 @@ class Header extends Component {
           <i className="fa fa-times" aria-hidden="true"></i>
         </CloseIconMobile>
         <Nav {...this.state}>
-          <NavLink to='/' onClick={this.toggleDisplay}>
+          <NavLink exact to='/' onClick={this.toggleDisplay}>
             Home
-          </NavLink>
-          <NavLink to='/add' onClick={this.toggleDisplay}>
-            Add Friend
-          </NavLink>
+        </NavLink>
+        <NavLink to='/add' onClick={this.toggleDisplay}>
+          Add Smurf
+        </NavLink>
         </Nav>
       </HeaderContainer>
     )
