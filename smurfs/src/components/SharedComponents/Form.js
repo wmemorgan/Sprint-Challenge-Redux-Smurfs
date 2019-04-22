@@ -3,23 +3,21 @@ import { connect } from 'react-redux'
 import { FormContainer } from './FormStyles'
 import Button from '../DesignComponents/Button'
 
-import { addData, deleteData, updateData } from '../../actions'
-
-// const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || '/'
+import { addSmurf, updateSmurf, deleteSmurf } from '../../actions'
 
 class Form extends Component {
   state = {
     id: '',
     name: '',
     age: '',
-    email: ''
+    height: ''
   }
 
   handleInput = e => {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  addRecord = e => {
+  addData = e => {
     // prevent default
     e.preventDefault()
 
@@ -27,24 +25,24 @@ class Form extends Component {
     let newRecord = {
       name: this.state.name,
       age: this.state.age,
-      email: this.state.email
+      height: this.state.height
     }
 
     // send new record to api
     this.props.addData(newRecord)
+        console.log(`Form submitted data sent: ${JSON.stringify(newRecord)}`)
     this.props.history.push('/')
 
-    console.log(`Form submitted data sent: ${JSON.stringify(newRecord)}`)
-    
     // reset form fields
     this.setState({
+      id: '',
       name: '',
       age: '',
-      email: ''
+      height: ''
     })
   }
 
-  updateRecord = e => {
+  updateData = e => {
     // prevent default
     e.preventDefault()
     // send updated record to api
@@ -52,67 +50,67 @@ class Form extends Component {
     this.props.history.push(`/friends/${this.state.id}`)
 
     console.log(`Form submitted data sent: ${JSON.stringify(this.state)}`)
-    
+
     // reset form fields
     this.setState({
       id: '',
       name: '',
       age: '',
-      email: ''
+      height: ''
     })
   }
 
-  deleteRecord = e => {
+  deleteData = e => {
     // prevent default
     e.preventDefault()
     // invoke the deleteFriend method and pass id
     this.props.deleteData(this.state.id)
     this.props.history.push('/')
     // reset form field
-    this.setState({id: ''})
+    this.setState({ id: '' })
   }
 
-   submitHandler = e => {
-      e.preventDefault()
-      if(this.props.update) {
-        this.updateRecord(e)
-      } else if(this.props.delete) {
-        this.deleteRecord(e)
-      } else {
-        this.addRecord(e)
-      }
+  submitHandler = e => {
+    e.preventDefault()
+    if (this.props.update) {
+      this.updateRecord(e)
+    } else if (this.props.delete) {
+      this.deleteData(e)
+    } else {
+      this.addData(e)
+    }
   }
 
-  // componentDidMount() {
-  //   if(this.props.update) {
-  //     this.prePopulateForm(this.props.id)
-  //   }
-  // }
+  componentDidMount() {
+    if(this.props.update) {
+      this.prePopulateForm(this.props.id)
+    }
+  }
 
   render() {
     return (
       <FormContainer {...this.props}>
         <div className="windowFrame"></div>
         <form onSubmit={this.submitHandler}>
-          {(this.props.update || this.props.delete) && 
-            <input name="id" type="number" 
-              placeholder="ID" onChange={this.handleInput} 
-              value={this.state.id} 
+          {(this.props.update || this.props.delete) &&
+            <input name="id" type="number"
+              placeholder="ID" onChange={this.handleInput}
+              value={this.state.id}
             />
           }
           {!this.props.delete && (
             <>
-              <input name="name" type="text" 
+              <input name="name" type="text"
                 placeholder="Name" onChange={this.handleInput}
-                value={this.state.name} 
+                value={this.state.name}
               />
-              <input name="age" type="number" 
+              <input name="age" type="number"
                 placeholder="Age" onChange={this.handleInput}
-                value={this.state.age} 
+                value={this.state.age}
               />
-              <input name="email" type="email" 
-                placeholder="Email" onChange={this.handleInput}
-                value={this.state.email}
+              <input name="height" type="height"
+                placeholder="height" onChange={this.handleInput}
+                value={this.state.height}
               />
             </>
           )}
@@ -130,4 +128,8 @@ class Form extends Component {
 
 }
 
-export default connect(null, { addData, deleteData, updateData })(Form)
+export default connect(null, { 
+  addData: addSmurf, 
+  updateData: updateSmurf,
+  deleteData: deleteSmurf
+})(Form)

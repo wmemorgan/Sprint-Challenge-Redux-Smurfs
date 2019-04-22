@@ -4,8 +4,8 @@ import { Route, withRouter } from 'react-router-dom'
 
 import { getSmurfs } from '../actions'
 
+import Form from '../components/SharedComponents/Form'
 import SmurfVillage from '../components/SmurfComponents/SmurfVillage'
-import SmurfForm from '../components/SmurfComponents/SmurfForm'
 import Smurf from '../components/SmurfComponents/Smurf'
 
 class Routes extends Component {
@@ -26,7 +26,7 @@ class Routes extends Component {
         <Route 
           path='/add'
           render={props =>
-            <SmurfForm
+            <Form
               {...props}
               add
             />}
