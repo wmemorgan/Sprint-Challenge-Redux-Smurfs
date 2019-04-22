@@ -12,7 +12,7 @@ class Routes extends Component {
   }
 
   render() {
-    console.log(`render this.props.smurfs is: `, this.props.smurfs)
+    console.log(`Routes render this.props.smurfs is: `, this.props.smurfs)
     return (
       <div>
         {/* Assign routes */}
