@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import { color, colorScheme, fontSizing, flex, breakpoints } from '../DesignComponents/theme'
 
 export const FormContainer = styled.div`
-  width: 90%;
-  max-width: 600px;
+  width: 600px;
   ${flex('column', 'center', 'center')};
+  margin: 20px 0;
   border-radius: 5px;
   box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
   background: ${color.lightText};
