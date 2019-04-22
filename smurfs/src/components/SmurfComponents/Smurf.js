@@ -53,6 +53,11 @@ class Smurf extends Component {
     })
   }
 
+  handleDelete = id => {
+    this.props.deleteSmurf(id)
+    this.props.history.push('/')
+  }
+
   render() {
     const { name, id, age, height } = this.props.smurf
     return (
@@ -62,7 +67,7 @@ class Smurf extends Component {
             <i className="far fa-edit" onClick={() => this.toggleEdit()}>
             </i>
             <i className="fa fa-trash"
-              onClick={() => this.props.deleteSmurf(id)}>
+              onClick={() => this.handleDelete(id)}>
             </i>
           </header>
           <div className="smurf-info">
